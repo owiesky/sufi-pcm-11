@@ -38,6 +38,8 @@ new #[Layout('layouts.guest')] class extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()]
         ]);
 
+        //dd($validated['username'] . ' dan ' .$validated['phone']);
+
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
@@ -70,6 +72,16 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="phone" :value="__('Handphone')" />
             <x-text-input wire:model="phone" id="phone" class="block mt-1 w-full" type="text"
                 name="phone" required autocomplete="phone" placeholder="081233557799" />
+            <x-text-input wire:model="username" id="username" class="block mt-1 w-full" type="text" name="username"
+                            required autofocus autocomplete="username" placeholder="sufikarya"/>
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
+        </div>
+
+        <!-- Phone -->
+        <div class="mt-4">
+            <x-input-label for="phone" :value="__('Handphone')" />
+            <x-text-input wire:model="phone" id="phone" class="block mt-1 w-full" type="text" name="phone"
+                            required autofocus autocomplete="phone" placeholder="081133557799" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
@@ -89,7 +101,6 @@ new #[Layout('layouts.guest')] class extends Component
                             name="password"
                             required autocomplete="new-password"
                             placeholder="sufi1234"/>
-
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -101,7 +112,6 @@ new #[Layout('layouts.guest')] class extends Component
                             type="password"
                             name="password_confirmation" required autocomplete="new-password"
                             placeholder="sufi1234"/>
-
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
