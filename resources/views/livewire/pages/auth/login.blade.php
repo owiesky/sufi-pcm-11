@@ -29,11 +29,12 @@ new #[Layout('layouts.guest')] class extends Component
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
-        <!-- Email Address -->
+        <!-- Info Login -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
+            <x-input-label for="infologin" :value="__('Handphone / Username / Email')" />
+            <x-text-input wire:model="form.infologin" id="infologin" class="block mt-1 w-full" type="text"
+                name="infologin" required autofocus />
+            <x-input-error :messages="$errors->get('infologin')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -68,4 +69,11 @@ new #[Layout('layouts.guest')] class extends Component
             </x-primary-button>
         </div>
     </form>
+    <!-- Daftar -->
+    <div class="block mt-4">
+        <label for="daftar" class="inline-flex items-center">
+            <input wire:click="/register" id="daftar" type="button" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="daftar">
+            <span class="ms-2 text-sm text-gray-600">{{ __('Daftar') }}</span>
+        </label>
+    </div>
 </div>
