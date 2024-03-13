@@ -67,16 +67,6 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
-        <!--Phone -->
-        <div class="mt-4">
-            <x-input-label for="phone" :value="__('Handphone')" />
-            <x-text-input wire:model="phone" id="phone" class="block mt-1 w-full" type="text"
-                name="phone" required autocomplete="phone" placeholder="081233557799" />
-            <x-text-input wire:model="username" id="username" class="block mt-1 w-full" type="text" name="username"
-                            required autofocus autocomplete="username" placeholder="sufikarya"/>
-            <x-input-error :messages="$errors->get('username')" class="mt-2" />
-        </div>
-
         <!-- Phone -->
         <div class="mt-4">
             <x-input-label for="phone" :value="__('Handphone')" />
