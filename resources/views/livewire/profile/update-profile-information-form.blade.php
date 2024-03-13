@@ -9,7 +9,9 @@ use Livewire\Volt\Component;
 new class extends Component
 {
     public string $name = '';
-    public string $username = '';
+
+    public ?string $username = '';
+    public ?string $phone = '';
     public string $email = '';
     public string $phone = '';
 
@@ -18,10 +20,13 @@ new class extends Component
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        // $this->name = Auth::user()->name;
+        // $this->email = Auth::user()->email;
+
+        $this->name     = Auth::user()->name;
+        $this->phone    = Auth::user()->phone;
         $this->username = Auth::user()->username;
-        $this->email = Auth::user()->email;
-        $this->phone = Auth::user()->phone;
+        $this->email    = Auth::user()->email;
     }
 
     /**
@@ -32,9 +37,11 @@ new class extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'lowercase','min:3','max:20'],
-            'phone' => ['required', 'numeric'],
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'name' => ['required', 'string', 'max:25'],
+            'username' => ['required', 'string', 'lowercase', 'max:25', Rule::unique(User::class)->ignore($user->id)],
+            'phone' => ['required','numeric', 'min_digits:10', 'max_digits:15',   Rule::unique(User::class)->ignore($user->id)],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:100', Rule::unique(User::class)->ignore($user->id)],
         ]);
 
@@ -87,6 +94,21 @@ new class extends Component
         </div>
 
                 <div>
+            <x-input-label for="username" :value="__('Username')" />
+            <x-text-input wire:model="username" id="username" name="username" type="text" class="mt-1 block w-full"
+                required autocomplete="username" />
+            <x-input-error class="mt-2" :messages="$errors->get('username')" />
+        </div>
+
+
+        <div>
+            <x-input-label for="phone" :value="__('Handphone')" />
+            <x-text-input wire:model="phone" id="phone" name="phone" type="text" class="mt-1 block w-full"
+                required autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
+        <div>
             <x-input-label for="username" :value="__('Username')" />
             <x-text-input wire:model="username" id="username" name="username" type="text" class="mt-1 block w-full"
                 required autocomplete="username" />

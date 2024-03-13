@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginForm extends Form
 {
+
+    // #[Validate('required|string|email')]
+    // public string $email = '';
+  
     #[Validate('required|string')]
     public string $infologin = '';
 
@@ -33,7 +37,8 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        // if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        // if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+
         //     RateLimiter::hit($this->throttleKey());
 
         //     throw ValidationException::withMessages([
