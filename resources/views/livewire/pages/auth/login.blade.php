@@ -37,7 +37,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div> --}}
 
         <!-- Info Login -->
-        <div>
+        <div class="">
             <x-input-label for="infologin" :value="__('Handphone / Username / Email')" />
             <x-text-input wire:model="form.infologin" id="infologin" class="block mt-1 w-full" type="text"
                 name="infologin" required autofocus />
@@ -77,10 +77,10 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
     </form>
     <!-- Daftar -->
-    <div class="block mt-4">
+    {{-- <div class="block mt-4">
         <label for="daftar" class="inline-flex items-center">
             <input wire:click="/register" id="daftar" type="button" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="daftar">
             <span class="ms-2 text-sm text-gray-600">{{ __('Daftar') }}</span>
         </label>
-    </div>
+    </div> --}}
 </div>
