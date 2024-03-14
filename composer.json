@@ -11,6 +11,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
+        "owenvoke/blade-fontawesome": "^2.6",
         "robsontenorio/mary": "^1.25"
     },
     "require-dev": {

@@ -17,4 +17,14 @@ class Logout
         Session::invalidate();
         Session::regenerateToken();
     }
+
+    public function doLogout()
+    {
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        return  redirect()->route('dashboard');
+    }
 }
